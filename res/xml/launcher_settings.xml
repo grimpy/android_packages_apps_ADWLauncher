@@ -46,6 +46,10 @@
 				android:dialogMessage="@string/pref_dialog_desktop_scrolling_speed"
 				android:key="desktopSpeed" android:defaultValue="@integer/config_desktopSpeed"
 				android:max="2000" />
+			<CheckBoxPreference android:title="@string/pref_title_desktop_loop"
+				android:defaultValue="false"
+				android:summary="@string/pref_summary_desktop_loop"
+				android:key="desktop_loop" />
 			<com.android.launcher.DialogSeekBarPreference
 				android:title="@string/pref_title_desktop_overshoot"
 				android:summary="@string/pref_summary_desktop_overshoot"

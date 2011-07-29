@@ -57,6 +57,7 @@
     <bool name="config_fadeDrawerLabels">false</bool>
     <bool name="config_desktop_indicator">true</bool>
     <bool name="config_desktop_indicator_autohide">false</bool>
+    <bool name="config_desktop_loop">false</bool>
     <!-- 1=top dots, 2=top slider, 3=bottom slider -->
     <string name="config_desktop_indicator_type">1</string>
     <string name="config_desktop_transition">1</string>

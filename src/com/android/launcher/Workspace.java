@@ -1072,16 +1072,19 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
 
 	@Override
 	public void OnFling(int Direction) {
+		boolean loop = AlmostNexusSettingsHelper.getDesktopLoop(mLauncher);
 		if (mTouchState == TOUCH_STATE_SCROLLING) {
-			if (Direction == FlingGesture.FLING_LEFT && mCurrentScreen > 0) {
-				snapToScreen(mCurrentScreen - 1);
-	        } else if (Direction == FlingGesture.FLING_RIGHT && mCurrentScreen < getChildCount() - 1) {
-	        	snapToScreen(mCurrentScreen + 1);
+			int nextScreen;
+			int maxScreen = getChildCount() - 1;
+			if (Direction == FlingGesture.FLING_LEFT && (mCurrentScreen > 0||loop)) {
+				nextScreen = mCurrentScreen > 0? mCurrentScreen - 1: maxScreen;
+	        } else if (Direction == FlingGesture.FLING_RIGHT && (mCurrentScreen < maxScreen || loop)) {
+	        	nextScreen = mCurrentScreen < maxScreen? mCurrentScreen + 1: 0;
 	        } else {
 				final int screenWidth = getWidth();
-				final int nextScreen = (getScrollX() + (screenWidth / 2)) / screenWidth;
-	            snapToScreen(nextScreen);
+				nextScreen = (getScrollX() + (screenWidth / 2)) / screenWidth;
 	        }
+			snapToScreen(nextScreen);
 		}
 	}
 

@@ -410,4 +410,6 @@
     <string name="pref_summary_close_apps_dockbar">Close the app drawer when longpressing items when the dockbar is visible</string>
     <string name="menu_lock">Lock Desktop</string>
     <string name="menu_unlock">Unlock Desktop</string>
+    <string name="pref_summary_desktop_loop">Scroll past the last homescreen will get to the first one</string>
+    <string name="pref_title_desktop_loop">Desktop looping</string>
 </resources>

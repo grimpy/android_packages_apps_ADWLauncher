@@ -412,6 +412,13 @@ public final class AlmostNexusSettingsHelper {
 	    boolean newD = sp.getBoolean("notif_receiver", context.getResources().getBoolean(R.bool.config_notif_receiver));
 	    return newD;
 	}
+	
+	public static boolean getDesktopLoop(Context context) {
+	    SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
+	    boolean newD = sp.getBoolean("desktop_loop", context.getResources().getBoolean(R.bool.config_desktop_loop));
+	    return newD;
+	}
+	
 	public static int getNotifSize(Context context) {
 	    SharedPreferences sp = context.getSharedPreferences(ALMOSTNEXUS_PREFERENCES, Context.MODE_PRIVATE);
 	    int def_screen = sp.getInt("notif_size", context.getResources().getInteger(R.integer.config_notif_size))+10;
