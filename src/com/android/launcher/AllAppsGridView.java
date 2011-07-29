@@ -51,7 +51,7 @@ import android.widget.Toast;
 
 public class AllAppsGridView extends GridView implements
 		AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener,
-		DragSource, Drawer, FlingListener {
+		DragSource, Drawer {
 
 	private DragController mDragger;
 	private Launcher mLauncher;
@@ -111,7 +111,6 @@ public class AllAppsGridView extends GridView implements
 
 	public AllAppsGridView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		mFlingGesture.setListener(this);
 		mPaint = new Paint();
 		mPaint.setDither(false);
 		mLabelPaint = new Paint();
