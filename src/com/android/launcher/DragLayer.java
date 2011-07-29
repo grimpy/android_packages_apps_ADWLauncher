@@ -444,8 +444,8 @@ public class DragLayer extends FrameLayout implements DragController {
 
             break;
         case MotionEvent.ACTION_MOVE:
-            final int scrollX = mScrollX;
-            final int scrollY = mScrollY;
+            final int scrollX = getScrollX();
+            final int scrollY = getScrollY();
 
             final float touchX = mTouchOffsetX;
             final float touchY = mTouchOffsetY;

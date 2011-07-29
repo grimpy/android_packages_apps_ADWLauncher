@@ -498,7 +498,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
     	//ADW: we set a condition to not move wallpaper beyond the "bounce" zone
     	if(getScrollX()>0 && getScrollX()<getChildAt(getChildCount() - 1).getLeft()){
     		mWallpaperManager.setWallpaperOffsetSteps(1.0f / (getChildCount() - 1), 0 );
-    		mWallpaperManager.setWallpaperOffsets(getWindowToken(), mScrollX / (float) scrollRange, 0);
+    		mWallpaperManager.setWallpaperOffsets(getWindowToken(), getScrollX() / (float) scrollRange, 0);
     	}
     }
 
@@ -568,9 +568,9 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
                 x = getRight() - getLeft() - mWallpaperWidth;
             }
             //ADW: added tweaks for when scrolling "beyond bounce limits" :P
-            if (mScrollX<0)x=mScrollX;
-            if(mScrollX>getChildAt(getChildCount() - 1).getRight() - (mRight - mLeft)){
-                x=(mScrollX-mWallpaperWidth+(mRight-mLeft));
+            if (getScrollX()<0)x=getScrollX();
+            if(getScrollX()>getChildAt(getChildCount() - 1).getRight() - (getRight() - getLeft())){
+                x=(getScrollX()-mWallpaperWidth+(getRight()-getLeft()));
             }
             //if(getChildCount()==1)x=getScrollX();
             //ADW lets center the wallpaper when there's only one screen...
@@ -607,7 +607,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
                 // lets calculate the current screen since it can move on use 
                 int currentScreen;
                 int width = getWidth();
-                int scrollX = mScrollX;
+                int scrollX = getScrollX();
                 int leftSideScreen = ( scrollX / width );
                 boolean isMovingRight = scrollX >= 0 && leftSideScreen >= mCurrentScreen;
                 if ( isMovingRight )
@@ -1114,7 +1114,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
 		}
 		final int duration = mScrollingSpeed + durationOffset;
         final int newX = whichScreen * getWidth();
-        final int delta = newX - mScrollX;
+        final int delta = newX - getScrollX();
         //mScroller.startScroll(mScrollX, 0, delta, 0, Math.abs(delta) * 2);
         if(!mSensemode)
         	mScroller.startScroll(getScrollX(), 0, delta, 0, duration);
@@ -1648,7 +1648,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
                                 mLauncher.getPackageManager(), info, mLauncher);
                         if (icon != null && icon != info.icon) {
                             info.icon.setCallback(null);
-                            info.icon = Utilities.createIconThumbnail(icon, mContext);
+                            info.icon = Utilities.createIconThumbnail(icon, mLauncher);
                             info.filtered = true;
                             ((TextView) view).setCompoundDrawablesWithIntrinsicBounds(null,
                                     info.icon, null, null);

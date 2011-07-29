@@ -181,7 +181,7 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
 		initWorkspace();
 	}
 	public AllAppsSlidingView(Context context, AttributeSet attrs) {
-		this(context, attrs, com.android.internal.R.attr.absListViewStyle);
+		this(context, attrs, android.R.attr.absListViewStyle);
         initWorkspace();
 	}
 	public AllAppsSlidingView(Context context, AttributeSet attrs, int defStyle) {
@@ -258,7 +258,7 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
 	@Override
 	protected void onScrollChanged(int l, int t, int oldl, int oldt) {
 		super.onScrollChanged(l, t, oldl, oldt);
-		mPager.setLeft(l);
+		//mPager.setLeft(l);
         if(mLayoutMode==LAYOUT_SCROLLING){
 			final int screenWidth = mPageWidth;
 	        final int whichScreen = (getScrollX() + (screenWidth / 2)) / screenWidth;
@@ -287,8 +287,9 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
     @Override
     protected void dispatchDraw(Canvas canvas) {
         int saveCount = 0;
-        final boolean clipToPadding = (mGroupFlags & CLIP_TO_PADDING_MASK) == CLIP_TO_PADDING_MASK;
-	canvas.drawARGB(mBgAlpha, Color.red(mBgColor), Color.green(mBgColor), Color.blue(mBgColor));
+        canvas.drawARGB(mBgAlpha, Color.red(mBgColor), Color.green(mBgColor), Color.blue(mBgColor));
+        /*final boolean clipToPadding = (mGroupFlags & CLIP_TO_PADDING_MASK) == CLIP_TO_PADDING_MASK;
+	
         if (clipToPadding) {
             saveCount = canvas.save();
             final int scrollX = mScrollX;
@@ -297,7 +298,7 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
                     scrollX + mRight - mLeft,
                     scrollY + mBottom - mTop);            
             mGroupFlags &= ~CLIP_TO_PADDING_MASK;
-        }
+        }*/
 
         final boolean drawSelectorOnTop = mDrawSelectorOnTop;
         if (!drawSelectorOnTop) {
@@ -310,10 +311,10 @@ public class AllAppsSlidingView extends AdapterView<ApplicationsAdapter> impleme
             drawSelector(canvas);
         }
 
-        if (clipToPadding) {
+        /*if (clipToPadding) {
             canvas.restoreToCount(saveCount);
             mGroupFlags |= CLIP_TO_PADDING_MASK;
-        }
+        }*/
     }
 
     @Override

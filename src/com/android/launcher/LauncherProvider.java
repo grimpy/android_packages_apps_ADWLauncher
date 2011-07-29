@@ -52,7 +52,7 @@ import java.util.List;
 
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParser;
-import com.android.internal.util.XmlUtils;
+import mobi.intuitit.android.internal.utils.XmlUtils;
 import com.android.launcher.LauncherSettings.Favorites;
 
 public class LauncherProvider extends ContentProvider {
@@ -650,13 +650,13 @@ public class LauncherProvider extends ContentProvider {
             return true;
         }
 
-        private ComponentName getSearchWidgetProvider() {
+        /*private ComponentName getSearchWidgetProvider() {
             SearchManager searchManager =
                     (SearchManager) mContext.getSystemService(Context.SEARCH_SERVICE);
             ComponentName searchComponent = searchManager.getGlobalSearchActivity();
             if (searchComponent == null) return null;
             return getProviderInPackage(searchComponent.getPackageName());
-        }
+        }*/
 
         /**
          * Gets an appwidget provider from the given package. If the package contains more than
@@ -677,8 +677,14 @@ public class LauncherProvider extends ContentProvider {
         }
 
         private boolean addSearchWidget(SQLiteDatabase db, ContentValues values) {
-            ComponentName cn = getSearchWidgetProvider();
-            return addAppWidget(db, values, cn, 4, 1);
+            //ComponentName cn = getSearchWidgetProvider();
+            //return addAppWidget(db, values, cn, 4, 1);
+            values.put(Favorites.ITEM_TYPE, Favorites.ITEM_TYPE_WIDGET_SEARCH);
+            values.put(Favorites.SPANX, 4);
+            values.put(Favorites.SPANY, 1);
+            db.insert(TABLE_FAVORITES, null, values);
+
+            return true;
         }
 
         private boolean addClockWidget(SQLiteDatabase db, ContentValues values) {

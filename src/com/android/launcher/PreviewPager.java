@@ -221,11 +221,11 @@ public class PreviewPager extends ViewGroup {
 			updateLayout();
 		}
 	}
-	protected void setLeft(int value){
-		int width=this.mRight-this.mLeft;
-		this.mLeft=value;
-		this.mRight=this.mLeft+width;
-	}
+	/*protected void setLeft(int value){
+		int width=this.getRight()-this.getLeft();
+		setLeft(value);
+		setLvalue+width;
+	}*/
 
 	public void enableGroupText(boolean show)
 	{

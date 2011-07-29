@@ -1506,7 +1506,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 
 		//ADW: add custom settings
         menu.add(MENU_GROUP_ALMOSTNEXUS, MENU_ALMOSTNEXUS, 0, R.string.menu_adw_settings)
-        .setIcon(com.android.internal.R.drawable.ic_menu_preferences)
+        .setIcon(android.R.drawable.ic_menu_preferences)
         .setAlphabeticShortcut('X');
         menu.add(MENU_GROUP_NORMAL, MENU_SEARCH, 0, R.string.menu_search)
         .setIcon(android.R.drawable.ic_search_category_default)
@@ -1515,7 +1515,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         .setIcon(android.R.drawable.ic_menu_gallery)
         .setAlphabeticShortcut('W');
         menu.add(MENU_GROUP_NORMAL, MENU_LOCK_DESKTOP, 0, R.string.menu_lock)
-        .setIcon(com.android.internal.R.drawable.ic_menu_block)
+        .setIcon(android.R.drawable.ic_menu_delete)
         .setAlphabeticShortcut('X');
 
         // drawer options
@@ -1542,7 +1542,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         menu.setGroupEnabled(MENU_GROUP_ADD, mMenuAddInfo != null && mMenuAddInfo.valid);
         boolean forceHidden=getResources().getBoolean(R.bool.force_hidden_settings);
         boolean showmenu=true;
-        if(!forceHidden){
+        /*if(!forceHidden){
 //	        //ADW: Check if this is the default launcher
 	        mIsDefaultLauncher=checkDefaultLauncher();
 //	        //ADW: Check if we're running on the specified mod rom
@@ -1550,7 +1550,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 	    	if(LOGD)Log.d(LOG_TAG,"System version="+mod);
 	    	if(LOGD)Log.d(LOG_TAG,"System version contains rom_mod_version?"+(mod.contains(getResources().getString(R.string.rom_mod_string).toLowerCase())));
 	    	showmenu=!mod.contains(getResources().getString(R.string.rom_mod_string).toLowerCase()) || !mIsDefaultLauncher;
-        }
+        }*/
         if(allAppsOpen)showmenu=false;
         menu.setGroupVisible(MENU_GROUP_ALMOSTNEXUS, showmenu);
         menu.setGroupVisible(MENU_GROUP_ADD, !allAppsOpen );
